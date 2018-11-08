@@ -7,4 +7,4 @@ The nlrx_ants_gif.R skript provides an example on how to create a gif animation 
 The experiment is set up and run via the nlrx package.
 The spatial output data is postprocssed in order to create an animate dplot with gganimate.
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/nlrx_ants_gif.gif)
