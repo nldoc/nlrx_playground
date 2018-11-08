@@ -69,6 +69,6 @@ p1 <- ggplot() +
   # labs(title = 'Step: {frame_time}') +
   theme_void() 
 
-gganimate::animate(p1, nframes = n - 1, width=800, height=800, fps=83)
+gganimate::animate(p1, width=800, height=800, duration=6)
 gganimate::anim_save("diffusion.gif")
 

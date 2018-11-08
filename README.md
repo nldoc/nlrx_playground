@@ -13,3 +13,8 @@ All the following examples show how to create a gif animation from a NetLogo mod
 ### [nlrx_diffusion_gif.R](https://github.com/nldoc/nlrx_playground/blob/master/nlrx_diffusion_gif.R)
 
 ![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/diffusion.gif)
+
+
+### [nlrx_fir_gif.R](https://github.com/nldoc/nlrx_playground/blob/master/nlrx_fire_gif.R)
+
+![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/fire.gif)
