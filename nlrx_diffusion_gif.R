@@ -44,11 +44,12 @@ results <- run_nl_all(nl = nl, cleanup = "all")
 ## Step1: Attach results to nl:
 setsim(nl, "simoutput") <- results
 
+
+# Prepare data for plotting
 library(tidyverse)
 library(ggplot2)
 library(gganimate)
 library(emojifont)
-library(nlrx)
 
 nl_spatial <- get_nl_spatial(nl, format = "tibble")
 
@@ -57,9 +58,6 @@ n <- 500
 turtles <- nl_spatial %>% dplyr::filter(group == "turtles" & step < n) %>% dplyr::select(xcor, ycor, step, who)
 patches <- nl_spatial %>% dplyr::filter(group == "patches"& step < n) %>% dplyr::select(patches_x, patches_y, pcolor, step)
 
-
-
-#----------------------------------
 ## Plot animation:
 p1 <- ggplot() +
   geom_tile(data = patches, aes(x=patches_x, y = patches_y, fill=pcolor)) +
@@ -71,6 +69,6 @@ p1 <- ggplot() +
   # labs(title = 'Step: {frame_time}') +
   theme_void() 
 
-gganimate::animate(p1, nframes = n - 1, width=800, height=800, fps=10)
-gganimate::anim_save("/home/marco/Downloads/diffusion.gif")
+gganimate::animate(p1, nframes = n - 1, width=800, height=800, fps=83)
+gganimate::anim_save("diffusion.gif")
 
