@@ -17,17 +17,17 @@ nl@experiment <- experiment(expname = "waves",
                             idrunnum = NA_character_,
                             runtime = 100,
                             evalticks = seq(1,100),
-                            constants = list("stiffness" = 20,
-                                             "friction" = 54),
-                            metrics.turtles = c("who", "xcor", "ycor", "driver?", "edge?"))
+                            variables = list('friction' = list(values = c(5,25,50,90))),
+                            constants = list("stiffness" = 20),
+                            metrics.turtles = c("who", "xcor", "ycor", "driver?", "edge?", "color"))
 
 
 # Evaluate if variables and constants are valid:
 eval_variables_constants(nl)
 
 ## Step3: Add a Simulation Design
-nl@simdesign <- simdesign_simple(nl = nl,
-                                 nseeds = 1)
+nl@simdesign <- simdesign_distinct(nl = nl,
+                                   nseeds = 1)
 
 
 # Step4: Run simulations:
@@ -46,21 +46,29 @@ library(emojifont)
 
 nl_spatial <- get_nl_spatial(nl, format = "tibble", patches = FALSE)
 
+nl_spatial$friction <- factor(nl_spatial$friction)
+levels(nl_spatial$friction) <- c("Friction = 5",
+                                 "Friction = 25",
+                                 "Friction = 50",
+                                 "Friction = 90")
+
 n <- 100
 
-waves  <- nl_spatial %>% dplyr::filter(`driver?` == "false" & `edge?` == "false" & step < n) %>% dplyr::select(xcor, ycor, step, who)
-egde   <- nl_spatial %>% dplyr::filter(`driver?` == "false" & `edge?` == "true" & step < n) %>% dplyr::select(xcor, ycor, step, who)
-driver <- nl_spatial %>% dplyr::filter(`driver?` == "true" & `edge?` == "false" & step < n) %>% dplyr::select(xcor, ycor, step, who)
+waves  <- nl_spatial %>% dplyr::filter(`driver?` == "false" & `edge?` == "false" & step < n) %>% dplyr::select(xcor, ycor, step, who, color, friction)
+egde   <- nl_spatial %>% dplyr::filter(`driver?` == "false" & `edge?` == "true" & step < n) %>% dplyr::select(xcor, ycor, step, who, friction)
+driver <- nl_spatial %>% dplyr::filter(`driver?` == "true" & `edge?` == "false" & step < n) %>% dplyr::select(xcor, ycor, step, who, friction)
+
 
 
 p1 <- ggplot(waves) +
-  geom_point(data = waves, aes(x = xcor, y = ycor, group = who), size=2, color = "red") +
-  geom_point(data = driver, aes(x = xcor, y = ycor, group = who), size=2, color = "green") +
-  geom_point(data = egde, aes(x = xcor, y = ycor, group = who), size=2, color = "blue") +
+  geom_point(data = waves, aes(x = xcor, y = ycor, group = who, color = color), size=2) +
+  geom_point(data = driver, aes(x = xcor, y = ycor, group = who), size=2, color = "grey") +
+  geom_point(data = egde, aes(x = xcor, y = ycor, group = who), size=2, color = "black") +
+  facet_wrap(~friction) +
   transition_time(step) +
   guides(color="none") +
   coord_equal() +
   theme_void() 
 
-g1 <- gganimate::animate(p1, width=800, height=800, duration = 6)
-gganimate::anim_save("waves.gif", g1)
+gganimate::animate(p1, width=800, height=800, duration = 6)
+gganimate::anim_save("waves.gif")
