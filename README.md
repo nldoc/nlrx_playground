@@ -18,3 +18,7 @@ All the following examples show how to create a gif animation from a NetLogo mod
 ### [nlrx_fir_gif.R](https://github.com/nldoc/nlrx_playground/blob/master/nlrx_fire_gif.R)
 
 ![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/fire.gif)
+
+### [nlrx_waves_gif.R](https://github.com/nldoc/nlrx_playground/blob/master/nlrx_waves_gif.R)
+
+![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/waves.gif)
