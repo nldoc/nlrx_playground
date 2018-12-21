@@ -22,3 +22,7 @@ All the following examples show how to create a gif animation from a NetLogo mod
 ### [nlrx_waves_gif.R](https://github.com/nldoc/nlrx_playground/blob/master/nlrx_waves_gif.R)
 
 ![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/waves.gif)
+
+### [nlrx_flocking_gif.R](https://github.com/nldoc/nlrx_playground/blob/master/nlrx_flocking_gif.R)
+
+![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/flocking.gif)
