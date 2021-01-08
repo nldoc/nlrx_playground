@@ -28,7 +28,8 @@ While the R scripts for producing these figures are hosted here, detailed descri
 
 ### [nlrx_flocking_gif.R](https://github.com/nldoc/nlrx_playground/blob/master/gif/nlrx_flocking_gif.R)
 
-![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/gif/flocking.gif)
+![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/gif/flocking_spoke.gif)
+![Alt Text](https://github.com/nldoc/nlrx_playground/blob/master/gif/flocking_text.gif)
 
 ### [nlrx_attachment_gif.R](https://github.com/nldoc/nlrx_playground/blob/master/gif/nlrx_attachment_gif.R)
 
